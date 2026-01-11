@@ -55,43 +55,40 @@ th,td{
 td.name{background:#fffbe6;}
 td[contenteditable]{cursor:text;}
 
-/* SUMMARY */
-.summary{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:20px;
-}
-.box{
-    border:1px solid #000;
-    padding:10px;
-    text-align:center;
-    font-weight:bold;
-}
-.box span{
-    display:block;
-    margin-top:5px;
-    font-size:18px;
-}
-
-/* FOOTER – مضبوط بدون تخريب */
+/* FOOTER */
 .footer{
     margin-top:30px;
 }
 .footer-row{
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
+
+/* SIGNATURES */
 .signature{
     border:1px solid #000;
     padding:10px;
     height:65px;
-    width:240px;
+    width:220px;
     font-weight:bold;
     line-height:1.8;
 }
 .signature.right{text-align:right;}
 .signature.left{text-align:left;}
+
+/* SUMMARY TABLE */
+.summary-table{
+    border-collapse:collapse;
+    text-align:center;
+    font-weight:bold;
+    min-width:230px;
+}
+.summary-table td{
+    border:1px solid #000;
+    padding:6px 10px;
+    font-size:14px;
+}
 
 /* EXPORT */
 .export-btn{
@@ -182,24 +179,35 @@ td[contenteditable]{cursor:text;}
 </tr>
 </table>
 
-<!-- SUMMARY -->
-<div class="summary">
-<div class="box">صباح<span id="sumMorning">0</span></div>
-<div class="box">مساء<span id="sumEvening">0</span></div>
-<div class="box">المجموع<span id="total">0</span></div>
-</div>
-
 <!-- FOOTER -->
 <div class="footer">
     <div class="footer-row">
+
         <div class="signature right">
             مسؤول العلاقات العامة<br>
             سلمان الحمود
         </div>
+
+        <table class="summary-table">
+            <tr>
+                <td>صباح</td>
+                <td><span id="sumMorning">0</span> من أصل 19</td>
+            </tr>
+            <tr>
+                <td>مساء</td>
+                <td><span id="sumEvening">0</span> من أصل 10</td>
+            </tr>
+            <tr>
+                <td>المجموع</td>
+                <td><span id="total">0</span> من أصل 29</td>
+            </tr>
+        </table>
+
         <div class="signature left">
             مدير المشروع<br>
             سالم الشمري
         </div>
+
     </div>
 </div>
 
@@ -207,13 +215,14 @@ td[contenteditable]{cursor:text;}
 
 <script>
 function calc(){
-    const m=document.querySelectorAll('.morning-check:checked').length;
-    const e=document.querySelectorAll('.evening-check:checked').length;
-    morningCount.innerText=sumMorning.innerText=m;
-    eveningCount.innerText=sumEvening.innerText=e;
-    total.innerText=m+e;
+    const m = document.querySelectorAll('.morning-check:checked').length;
+    const e = document.querySelectorAll('.evening-check:checked').length;
+
+    morningCount.innerText = sumMorning.innerText = m;
+    eveningCount.innerText = sumEvening.innerText = e;
+    total.innerText = m + e;
 }
-document.addEventListener('change',calc);
+document.addEventListener('change', calc);
 </script>
 
 </div>
