@@ -33,7 +33,7 @@ body{
     line-height:1.6;
 }
 
-/* TABLE */
+/* TABLES */
 table{
     width:100%;
     border-collapse:collapse;
@@ -55,38 +55,42 @@ th,td{
 td.name{background:#fffbe6;}
 td[contenteditable]{cursor:text;}
 
-/* FOOTER */
+/* FOOTER GRID */
 .footer{
     margin-top:30px;
 }
-.footer-row{
-    display:flex;
-    justify-content:space-between;
+.footer-grid{
+    display:grid;
+    grid-template-columns:240px 1fr 240px;
     align-items:center;
 }
 
-/* SIGNATURES */
+/* SIGNATURE */
 .signature{
     border:1px solid #000;
     padding:10px;
-    height:65px;
-    width:220px;
+    height:70px;
     font-weight:bold;
     line-height:1.8;
 }
-.signature.right{text-align:right;}
-.signature.left{text-align:left;}
+.signature.right{
+    text-align:right;
+}
+.signature.left{
+    text-align:left;
+}
 
 /* SUMMARY TABLE */
 .summary-table{
     border-collapse:collapse;
-    text-align:center;
+    margin:auto;
     font-weight:bold;
-    min-width:230px;
+    min-width:260px;
 }
 .summary-table td{
     border:1px solid #000;
-    padding:6px 10px;
+    padding:6px 12px;
+    text-align:center;
     font-size:14px;
 }
 
@@ -181,7 +185,7 @@ td[contenteditable]{cursor:text;}
 
 <!-- FOOTER -->
 <div class="footer">
-    <div class="footer-row">
+    <div class="footer-grid">
 
         <div class="signature right">
             مسؤول العلاقات العامة<br>
@@ -189,18 +193,9 @@ td[contenteditable]{cursor:text;}
         </div>
 
         <table class="summary-table">
-            <tr>
-                <td>صباح</td>
-                <td><span id="sumMorning">0</span> من أصل 19</td>
-            </tr>
-            <tr>
-                <td>مساء</td>
-                <td><span id="sumEvening">0</span> من أصل 10</td>
-            </tr>
-            <tr>
-                <td>المجموع</td>
-                <td><span id="total">0</span> من أصل 29</td>
-            </tr>
+            <tr><td>صباح</td><td><span id="sumMorning">0</span> من أصل 19</td></tr>
+            <tr><td>مساء</td><td><span id="sumEvening">0</span> من أصل 10</td></tr>
+            <tr><td>المجموع</td><td><span id="total">0</span> من أصل 29</td></tr>
         </table>
 
         <div class="signature left">
@@ -215,14 +210,13 @@ td[contenteditable]{cursor:text;}
 
 <script>
 function calc(){
-    const m = document.querySelectorAll('.morning-check:checked').length;
-    const e = document.querySelectorAll('.evening-check:checked').length;
-
-    morningCount.innerText = sumMorning.innerText = m;
-    eveningCount.innerText = sumEvening.innerText = e;
-    total.innerText = m + e;
+    const m=document.querySelectorAll('.morning-check:checked').length;
+    const e=document.querySelectorAll('.evening-check:checked').length;
+    morningCount.innerText=sumMorning.innerText=m;
+    eveningCount.innerText=sumEvening.innerText=e;
+    total.innerText=m+e;
 }
-document.addEventListener('change', calc);
+document.addEventListener('change',calc);
 </script>
 
 </div>
