@@ -58,51 +58,32 @@ td.name{background:#fffbe6;}
 td[contenteditable]{cursor:text;}
 
 /* SUMMARY */
-.summary{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:20px;
-}
-.box{
-    border:1px solid #000;
-    padding:10px;
-    text-align:center;
-    font-weight:bold;
-}
-.box span{
-    display:block;
-    margin-top:5px;
-    font-size:18px;
-}
-
 /* FOOTER */
 .footer{
     margin-top:25px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
 }
+
+.signature-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
 .signature{
     border:1px solid #000;
     padding:10px;
     height:65px;
-    text-align:center;
+    width:45%;
     font-weight:bold;
+    line-height:1.8;
 }
 
-.export-btn{
-    position:fixed;
-    bottom:25px;
-    left:25px;
-    background:#c7a35a;
-    border:none;
-    padding:12px 22px;
-    font-size:15px;
-    font-weight:bold;
-    border-radius:6px;
-    cursor:pointer;
-    z-index:9999;
+.signature.right{
+    text-align:right;
+}
+
+.signature.left{
+    text-align:left;
 }
 @media print{
     body{background:none;}
