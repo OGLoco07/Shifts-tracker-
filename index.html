@@ -26,9 +26,7 @@ body{
     border-bottom:6px solid #c7a35a;
     padding-bottom:10px;
 }
-.header img{
-    height:65px;
-}
+.header img{height:65px;}
 .header .center{
     text-align:center;
     font-weight:bold;
@@ -58,39 +56,55 @@ td.name{background:#fffbe6;}
 td[contenteditable]{cursor:text;}
 
 /* SUMMARY */
-/* FOOTER */
-/* FOOTER */
-/* FIX FOOTER ONLY */
-.footer{
-    margin-top:25px;
-    direction:ltr; /* عزل الفوتر */
+.summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+.box{
+    border:1px solid #000;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+}
+.box span{
+    display:block;
+    margin-top:5px;
+    font-size:18px;
 }
 
-.signature-container{
+/* FOOTER – مضبوط بدون تخريب */
+.footer{
+    margin-top:30px;
+}
+.footer-row{
     display:flex;
     justify-content:space-between;
-    width:100%;
 }
-
 .signature{
     border:1px solid #000;
     padding:10px;
     height:65px;
-    width:230px;
+    width:240px;
     font-weight:bold;
     line-height:1.8;
 }
+.signature.right{text-align:right;}
+.signature.left{text-align:left;}
 
-/* يمين الصفحة */
-.signature.right{
-    direction:rtl;
-    text-align:right;
-}
-
-/* يسار الصفحة */
-.signature.left{
-    direction:rtl;
-    text-align:left;
+/* EXPORT */
+.export-btn{
+    position:fixed;
+    bottom:25px;
+    left:25px;
+    background:#c7a35a;
+    border:none;
+    padding:12px 22px;
+    font-size:15px;
+    font-weight:bold;
+    border-radius:6px;
+    cursor:pointer;
 }
 @media print{
     body{background:none;}
@@ -104,13 +118,13 @@ td[contenteditable]{cursor:text;}
 
 <!-- HEADER -->
 <div class="header">
-    <img src="majdoul.png" alt="Majdoul">
+    <img src="majdoul.png">
     <div class="center">
         شركة LINK EXPERT<br>
         جدول الحضور اليومي<br>
         <input type="date">
     </div>
-    <img src="linkexpert.png" alt="Link Expert">
+    <img src="linkexpert.png">
 </div>
 
 <!-- MORNING -->
@@ -119,7 +133,6 @@ td[contenteditable]{cursor:text;}
 <th>#</th><th>المسمى الوظيفي</th><th>الاسم</th><th>الفترة</th><th>حضور</th>
 </tr>
 
-<!-- 19 ROWS -->
 <tr><td>1</td><td>مدير المواقف</td><td class="name" contenteditable></td><td>7ص–7م</td><td><input type="checkbox" class="morning-check"></td></tr>
 <tr><td>2</td><td>تغطيات</td><td class="name" contenteditable></td><td>7ص–7م</td><td><input type="checkbox" class="morning-check"></td></tr>
 <tr><td>3</td><td>تغطيات</td><td class="name" contenteditable></td><td>7ص–7م</td><td><input type="checkbox" class="morning-check"></td></tr>
@@ -178,12 +191,11 @@ td[contenteditable]{cursor:text;}
 
 <!-- FOOTER -->
 <div class="footer">
-    <div class="signature-container">
+    <div class="footer-row">
         <div class="signature right">
-            مسؤول العلاقات العامة بالبرج<br>
+            مسؤول العلاقات العامة<br>
             سلمان الحمود
         </div>
-
         <div class="signature left">
             مدير المشروع<br>
             سالم الشمري
@@ -195,22 +207,15 @@ td[contenteditable]{cursor:text;}
 
 <script>
 function calc(){
-const m=document.querySelectorAll('.morning-check:checked').length;
-const e=document.querySelectorAll('.evening-check:checked').length;
-morningCount.innerText=sumMorning.innerText=m;
-eveningCount.innerText=sumEvening.innerText=e;
-total.innerText=m+e;
+    const m=document.querySelectorAll('.morning-check:checked').length;
+    const e=document.querySelectorAll('.evening-check:checked').length;
+    morningCount.innerText=sumMorning.innerText=m;
+    eveningCount.innerText=sumEvening.innerText=e;
+    total.innerText=m+e;
 }
 document.addEventListener('change',calc);
-
-document.querySelectorAll('.name').forEach(c=>{
-c.addEventListener('input',()=>{
-if(c.innerText.trim()!==""){
-signatureName.innerText=c.innerText.trim();
-}
-});
-});
 </script>
 
+</div>
 </body>
 </html>
